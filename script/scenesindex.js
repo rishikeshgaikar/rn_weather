@@ -23,7 +23,7 @@ const generate = () => {
 
   const scenes = `${properties}
   \n export default {${testproperties},}`;
-  fs.writeFileSync("app/src/scenes/index2.js", scenes, "utf8");
+  fs.writeFileSync("app/src/scenes/index.js", scenes, "utf8");
 };
 
 generate();
