@@ -1,11 +1,13 @@
-import React from "react";
-import { Image, View } from "react-native";
-import R from "../R";
+import React, { Component } from "react";
+import { Text, View } from "react-native";
+export class SplashScreen extends Component {
+  render() {
+    return (
+      <View>
+        <Text> Splash </Text>
+      </View>
+    );
+  }
+}
 
-const componentName = () => (
-  <View>
-    <Image source={R.images.splash} />
-  </View>
-);
-
-export default componentName;
+export default SplashScreen;

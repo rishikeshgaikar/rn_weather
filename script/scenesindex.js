@@ -12,7 +12,7 @@ const generate = () => {
   const properties = ScenesIndexMaker()
     .map(name => {
       const key = name.replace(/\s/g, "");
-      return `import ${key} from('./${key}')`;
+      return `import ${key} from './${key}'`;
     })
     .join(";\n  ");
 
