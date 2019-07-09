@@ -1,5 +1,8 @@
 import React, { Component } from "react";
-import { Text, View } from "react-native";
+import { Text, View, FlatList } from "react-native";
+import Item from "../components/Item";
+import styles from "../Styles";
+import R from "../R";
 
 export class HomeScreen extends Component {
   constructor() {
@@ -11,7 +14,8 @@ export class HomeScreen extends Component {
       time: "",
       latitude: "",
       longitude: "",
-      timezone: ""
+      timezone: "",
+      dataSource: ""
     };
   }
 
@@ -29,16 +33,22 @@ export class HomeScreen extends Component {
       .then(responseJson =>
         this.setState({
           currently: responseJson.currently,
-          daily: responseJson.daily,
+          daily: responseJson.daily.data,
           time: responseJson.currently.time,
           latitude: responseJson.latitude,
           longitude: responseJson.longitude,
-          timezone: responseJson.timezone
+          timezone: responseJson.timezone,
+          dataSource: responseJson.daily.data
         })
       )
       .catch(error => {
         console.error(error);
       });
+  }
+  renderdaily() {
+    return this.state.daily.map(dailydata => (
+      <Item key={dailydata.time} dailydata={dailydata} />
+    ));
   }
 
   render() {
@@ -46,17 +56,33 @@ export class HomeScreen extends Component {
     var myDate = new Date(this.state.currently.time * 1000);
     console.log(myDate.toGMTString(), myDate.toLocaleString());
     console.log(this.state.daily);
+    this.state.daily.map(link => console.log(link.summary));
+    console.log(this.state.dataSource);
+
     return (
-      <View>
-        <Text>{this.state.latitude}</Text>
-        <Text>{this.state.longitude}</Text>
-        <Text>{this.state.timezone}</Text>
-        <Text>{this.state.currently.summary}</Text>
-        <Text>{this.state.currently.temperature}</Text>
-        <Text>{this.state.currently.pressure}</Text>
-        <Text>{this.state.currently.windSpeed}</Text>
-        <Text>{this.state.currently.time}</Text>
-        <Text>{this.state.currently.nearestStormDistance}</Text>
+      <View style={styles.container}>
+        <View style={styles.cc1}>
+          <View style={styles.c1}>
+            <Text style={styles.celsiusText}>
+              {Math.round(this.state.currently.temperature)}&deg;C
+            </Text>
+            <Text>{this.state.currently.summary}</Text>
+          </View>
+          <View style={styles.c2}>
+            <Text>Pressure: {this.state.currently.pressure} hPa</Text>
+            <Text>Wind Speed: {this.state.currently.windSpeed} m/s</Text>
+            <Text>Humidity: {this.state.currently.humidity} %</Text>
+          </View>
+        </View>
+
+        <View style={styles.cc2}>
+          <FlatList
+            data={this.state.dataSource}
+            renderItem={({ item }) => <Item data={item} />}
+            keyExtractor={(item, index) => index.toString()}
+          />
+          {/* {this.renderdaily()} */}
+        </View>
       </View>
     );
   }
