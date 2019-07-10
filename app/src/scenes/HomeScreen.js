@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { Text, View, FlatList } from "react-native";
+import { Text, View, FlatList, Image } from "react-native";
 import Item from "../components/Item";
 import styles from "../Styles";
+import Img from "../components/Img";
 import R from "../R";
 
 export class HomeScreen extends Component {
@@ -47,22 +48,23 @@ export class HomeScreen extends Component {
   }
   renderdaily() {
     return this.state.daily.map(dailydata => (
-      <Item key={dailydata.time} dailydata={dailydata} />
+      <Item key={dailydata.icon} dailydata={dailydata} />
     ));
   }
 
   render() {
-    console.log(this.state.currently.time);
-    var myDate = new Date(this.state.currently.time * 1000);
-    console.log(myDate.toGMTString(), myDate.toLocaleString());
-    console.log(this.state.daily);
-    this.state.daily.map(link => console.log(link.summary));
+    // console.log(this.state.currently.time);
+    // var myDate = new Date(this.state.currently.time * 1000);
+    // console.log(myDate.toGMTString(), myDate.toLocaleString());
+    // console.log(this.state.daily);
+    // this.state.daily.map(link => console.log(link.summary));
     console.log(this.state.dataSource);
 
     return (
       <View style={styles.container}>
         <View style={styles.cc1}>
           <View style={styles.c1}>
+            <Img d2={this.state.currently.icon} h={60} w={60} />
             <Text style={styles.celsiusText}>
               {Math.round(this.state.currently.temperature)}&deg;C
             </Text>

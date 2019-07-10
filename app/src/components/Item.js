@@ -1,6 +1,7 @@
 import React from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet, Image } from "react-native";
 import Time from "./Time";
+import Img from "./Img";
 
 const Item = props => (
   <View style={styles.container}>
@@ -10,6 +11,7 @@ const Item = props => (
     <View style={styles.c2}>
       <Text>{Math.round(props.data.temperatureMax)}&deg;C</Text>
       <Text>{props.data.icon}</Text>
+      <Img d2={props.data.icon} h={20} w={20} />
     </View>
   </View>
 );
