@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import { Text, View, FlatList, Image } from "react-native";
+import { Text, View, FlatList, ScrollView } from "react-native";
 import Item from "../components/Item";
 import styles from "../Styles";
 import Img from "../components/Img";
+import HCard from "../components/HCard";
 import R from "../R";
 
 export class HomeScreen extends Component {
@@ -64,16 +65,50 @@ export class HomeScreen extends Component {
       <View style={styles.container}>
         <View style={styles.cc1}>
           <View style={styles.c1}>
-            <Img d2={this.state.currently.icon} h={60} w={60} />
+            <Img d2={this.state.currently.icon} h={100} w={100} />
             <Text style={styles.celsiusText}>
               {Math.round(this.state.currently.temperature)}&deg;C
             </Text>
             <Text>{this.state.currently.summary}</Text>
           </View>
           <View style={styles.c2}>
-            <Text>Pressure: {this.state.currently.pressure} hPa</Text>
-            <Text>Wind Speed: {this.state.currently.windSpeed} m/s</Text>
-            <Text>Humidity: {this.state.currently.humidity} %</Text>
+            <ScrollView horizontal={true}>
+              <HCard
+                data={this.state.currently.pressure}
+                heading={"Pressure"}
+                unit={"hPa"}
+              />
+              <HCard
+                data={this.state.currently.windSpeed}
+                heading={"Wind Speed"}
+                unit={"m/s"}
+              />
+              <HCard
+                data={this.state.currently.humidity}
+                heading={"Humidity"}
+                unit={"%"}
+              />
+              <HCard
+                data={this.state.currently.dewPoint}
+                heading={"Dew Pt"}
+                unit={"&deg;"}
+              />
+              <HCard
+                data={this.state.currently.uvIndex}
+                heading={"UV Index"}
+                unit={""}
+              />
+              <HCard
+                data={this.state.currently.visibility}
+                heading={"Visibility"}
+                unit={""}
+              />
+              <HCard
+                data={this.state.currently.ozone}
+                heading={"Ozone"}
+                unit={""}
+              />
+            </ScrollView>
           </View>
         </View>
 

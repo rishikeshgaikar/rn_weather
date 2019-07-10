@@ -4,28 +4,23 @@ import R from "./R";
 const styles = StyleSheet.create({
   container: {
     flex: 1
-    // alignItems: "center",
-    // justifyContent: "center"
   },
   c1: {
-    flex: 4,
+    flex: 3,
     alignItems: "center",
     justifyContent: "center"
   },
   c2: {
-    flex: 2,
+    flex: 1,
+    // flexDirection: "row",
     alignItems: "center",
     justifyContent: "center"
   },
   cc1: {
     flex: 4
-    // alignItems: "center",
-    // justifyContent: "center"
   },
   cc2: {
     flex: 2
-    // alignItems: "center",
-    // justifyContent: "center"
   },
   statusbar: {
     backgroundColor: R.colors.statusbar
@@ -34,16 +29,6 @@ const styles = StyleSheet.create({
     fontSize: 70,
     fontStyle: "normal",
     fontFamily: R.fonts.GoogleSans_Bold
-    // paddingTop: 30
-  },
-  textinput: {
-    color: R.colors.white,
-    fontSize: 30,
-    fontStyle: "normal",
-    fontFamily: R.fonts.GoogleSans_Regular,
-    marginTop: 20,
-    borderWidth: 0.5,
-    borderRadius: 8
   }
 });
 
