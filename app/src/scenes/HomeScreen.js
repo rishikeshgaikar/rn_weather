@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Text, View, FlatList, ScrollView } from "react-native";
 import { HCard, Item, Img, Loading } from "../components";
 import styles from "../Styles";
+import R from "../R";
 
 export class HomeScreen extends Component {
   constructor() {
@@ -19,15 +20,13 @@ export class HomeScreen extends Component {
   }
 
   componentDidMount() {
-    return fetch(
-      "https://api.darksky.net/forecast/97bbbe51f6bf06e0fa1d20b2f12146b6/19.0760,72.8777?units=si&exclude=minutely,hourly,alerts",
-
-      {
-        headers: {
-          "Cache-Control": "no-cache"
-        }
+    const api =
+      R.strings.api.api1 + `` + R.strings.api.key + `` + R.strings.api.api2;
+    return fetch(api, {
+      headers: {
+        "Cache-Control": "no-cache"
       }
-    )
+    })
       .then(response => response.json())
       .then(responseJson =>
         this.setState({
