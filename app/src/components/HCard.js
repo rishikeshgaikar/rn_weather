@@ -1,5 +1,6 @@
 import React from "react";
 import { Text, View, StyleSheet } from "react-native";
+import R from "../R";
 
 const HCard = props => (
   <View style={styles.body}>
@@ -13,28 +14,27 @@ const HCard = props => (
 const styles = StyleSheet.create({
   body: {
     flex: 1,
-    backgroundColor: "#ef553a",
+    backgroundColor: R.colors.card,
     width: 150,
     margin: 8,
     paddingTop: 10,
     paddingLeft: 10,
     paddingRight: 10,
     borderRadius: 10,
-    shadowColor: "#000",
+    shadowColor: R.colors.shadow,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 2,
     elevation: 10
   },
   title: {
-    fontWeight: "bold",
-    color: "#fff",
+    fontFamily: R.fonts.GoogleSans_Bold,
     textAlign: "center",
     fontSize: 20,
     marginBottom: 10
   },
   text: {
-    color: "#fff",
+    fontFamily: R.fonts.GoogleSans_Regular,
     textAlign: "center",
     fontSize: 16
   }

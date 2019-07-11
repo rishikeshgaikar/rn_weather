@@ -27,11 +27,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "row",
-    backgroundColor: "#f37e69",
+    backgroundColor: R.colors.card,
     margin: 8,
     padding: 10,
     borderRadius: 10,
-    shadowColor: "#000",
+    shadowColor: R.colors.shadow,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 2,

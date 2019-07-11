@@ -12,7 +12,6 @@ const styles = StyleSheet.create({
   },
   c2: {
     flex: 1,
-    // flexDirection: "row",
     alignItems: "center",
     justifyContent: "center"
   },
@@ -29,6 +28,20 @@ const styles = StyleSheet.create({
     fontSize: 70,
     fontStyle: "normal",
     fontFamily: R.fonts.GoogleSans_Bold
+  },
+  splashContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  splashImg: {
+    height: 100,
+    width: 100
+  },
+  splashTitle: {
+    fontSize: 30,
+    fontFamily: R.fonts.GoogleSans_Regular,
+    paddingTop: 20
   }
 });
 
