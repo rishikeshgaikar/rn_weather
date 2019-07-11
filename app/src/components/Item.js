@@ -1,7 +1,6 @@
 import React from "react";
-import { Text, View, StyleSheet, Image } from "react-native";
-import Time from "./Time";
-import Img from "./Img";
+import { Text, View, StyleSheet } from "react-native";
+import { Time, Img } from "../components";
 import R from "../R";
 
 const Item = props => (
@@ -63,4 +62,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Item;
+export { Item };

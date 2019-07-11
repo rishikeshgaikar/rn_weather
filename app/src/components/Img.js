@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { StyleSheet, Image, Text } from "react-native";
+import { Image } from "react-native";
 import R from "../R";
 
-export default class Img extends Component {
+export class Img extends Component {
   constructor(props) {
     super(props);
   }
@@ -10,9 +10,6 @@ export default class Img extends Component {
     let icon = this.props.d2;
     let w = this.props.h;
     let h = this.props.w;
-    // console.log(icon);
-    // console.log(w);
-    // console.log(h);
     switch (icon) {
       case "clear-day":
         return (
@@ -67,3 +64,5 @@ export default class Img extends Component {
     }
   }
 }
+
+export default Img;

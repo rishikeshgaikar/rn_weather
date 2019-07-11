@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, View, StyleSheet } from "react-native";
 
-const Card = props => (
+const HCard = props => (
   <View style={styles.body}>
     <Text style={styles.title}>{props.heading}</Text>
     <Text style={styles.text}>
@@ -40,4 +40,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Card;
+export { HCard };

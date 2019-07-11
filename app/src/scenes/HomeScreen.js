@@ -1,10 +1,7 @@
 import React, { Component } from "react";
 import { Text, View, FlatList, ScrollView } from "react-native";
-import Item from "../components/Item";
+import { HCard, Item, Img } from "../components";
 import styles from "../Styles";
-import Img from "../components/Img";
-import HCard from "../components/HCard";
-import R from "../R";
 
 export class HomeScreen extends Component {
   constructor() {
@@ -47,20 +44,8 @@ export class HomeScreen extends Component {
         console.error(error);
       });
   }
-  renderdaily() {
-    return this.state.daily.map(dailydata => (
-      <Item key={dailydata.icon} dailydata={dailydata} />
-    ));
-  }
 
   render() {
-    // console.log(this.state.currently.time);
-    // var myDate = new Date(this.state.currently.time * 1000);
-    // console.log(myDate.toGMTString(), myDate.toLocaleString());
-    // console.log(this.state.daily);
-    // this.state.daily.map(link => console.log(link.summary));
-    console.log(this.state.dataSource);
-
     return (
       <View style={styles.container}>
         <View style={styles.cc1}>
@@ -118,7 +103,6 @@ export class HomeScreen extends Component {
             renderItem={({ item }) => <Item data={item} />}
             keyExtractor={(item, index) => index.toString()}
           />
-          {/* {this.renderdaily()} */}
         </View>
       </View>
     );

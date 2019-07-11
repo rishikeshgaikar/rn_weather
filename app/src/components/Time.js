@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import R from "../R";
 
-export default class Time extends Component {
+export class Time extends Component {
   constructor(props) {
     super(props);
   }
@@ -23,3 +23,5 @@ const styles = StyleSheet.create({
     fontSize: 20
   }
 });
+
+export default Time;
