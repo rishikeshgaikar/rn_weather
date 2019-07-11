@@ -42,7 +42,14 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontFamily: R.fonts.GoogleSans_Regular,
     paddingTop: 20
-  }
+  },
+  spinnerStyle: {
+    flex: 1,
+    padding: 20,
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  spinner: { padding: 30 }
 });
 
 export default styles;
