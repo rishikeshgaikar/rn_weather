@@ -1,7 +1,7 @@
-import React from "react";
-import { Text, View, StyleSheet } from "react-native";
-import { Time, Img } from "../components";
-import R from "../R";
+import React from 'react';
+import { Text, View, StyleSheet } from 'react-native';
+import { Time, Img } from '../components';
+import R from '../R';
 
 const Item = props => (
   <View style={styles.container}>
@@ -26,7 +26,7 @@ const Item = props => (
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: "row",
+    flexDirection: 'row',
     backgroundColor: R.colors.card,
     margin: 8,
     padding: 10,
@@ -40,24 +40,24 @@ const styles = StyleSheet.create({
   c1: {
     flex: 3,
     paddingLeft: 10,
-    justifyContent: "center"
+    justifyContent: 'center'
   },
   c2: {
     flex: 2,
-    alignItems: "center",
-    justifyContent: "center"
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   c3: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center"
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   text: {
-    fontFamily: R.fonts.GoogleSans_Regular,
+    fontFamily: R.fonts.psRegular,
     fontSize: 20
   },
   temp: {
-    fontFamily: R.fonts.GoogleSans_Regular,
+    fontFamily: R.fonts.psRegular,
     fontSize: 15
   }
 });

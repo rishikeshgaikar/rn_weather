@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import { View, Text, StyleSheet } from "react-native";
-import R from "../R";
+import React, { Component } from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+import R from '../R';
 
 export class Time extends Component {
   constructor(props) {
@@ -10,7 +10,7 @@ export class Time extends Component {
     var myDate = new Date(this.props.children * 1000);
     return (
       <View>
-        <Text style={styles.text}>{myDate.toDateString("en-IN")}</Text>
+        <Text style={styles.text}>{myDate.toDateString('en-IN')}</Text>
         {/* <Text>{myDate.getDay("en-IN")}</Text> */}
       </View>
     );
@@ -19,7 +19,7 @@ export class Time extends Component {
 
 const styles = StyleSheet.create({
   text: {
-    fontFamily: R.fonts.GoogleSans_Regular,
+    fontFamily: R.fonts.psRegular,
     fontSize: 20
   }
 });

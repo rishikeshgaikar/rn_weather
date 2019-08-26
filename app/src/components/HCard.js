@@ -1,6 +1,6 @@
-import React from "react";
-import { Text, View, StyleSheet } from "react-native";
-import R from "../R";
+import React from 'react';
+import { Text, View, StyleSheet } from 'react-native';
+import R from '../R';
 
 const HCard = props => (
   <View style={styles.body}>
@@ -28,14 +28,14 @@ const styles = StyleSheet.create({
     elevation: 10
   },
   title: {
-    fontFamily: R.fonts.GoogleSans_Bold,
-    textAlign: "center",
+    fontFamily: R.fonts.psBold,
+    textAlign: 'center',
     fontSize: 20,
     marginBottom: 10
   },
   text: {
-    fontFamily: R.fonts.GoogleSans_Regular,
-    textAlign: "center",
+    fontFamily: R.fonts.psRegular,
+    textAlign: 'center',
     fontSize: 16
   }
 });

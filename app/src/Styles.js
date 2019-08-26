@@ -1,5 +1,9 @@
-import { StyleSheet } from "react-native";
-import R from "./R";
+import { StyleSheet } from 'react-native';
+import R from './R';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp
+} from 'react-native-responsive-screen';
 
 const styles = StyleSheet.create({
   container: {
@@ -7,13 +11,13 @@ const styles = StyleSheet.create({
   },
   c1: {
     flex: 4,
-    alignItems: "center",
-    justifyContent: "center"
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   c2: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center"
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   cc1: {
     flex: 4
@@ -26,28 +30,28 @@ const styles = StyleSheet.create({
   },
   celsiusText: {
     fontSize: 70,
-    fontStyle: "normal",
-    fontFamily: R.fonts.GoogleSans_Bold
+    fontStyle: 'normal',
+    fontFamily: R.fonts.psBold
   },
   splashContainer: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center"
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   splashImg: {
-    height: 100,
-    width: 100
+    height: 200,
+    width: 200
   },
   splashTitle: {
     fontSize: 30,
-    fontFamily: R.fonts.GoogleSans_Regular,
+    fontFamily: R.fonts.psRegular,
     paddingTop: 20
   },
   spinnerStyle: {
     flex: 1,
     padding: 20,
-    alignItems: "center",
-    justifyContent: "center"
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   spinner: { padding: 30 }
 });

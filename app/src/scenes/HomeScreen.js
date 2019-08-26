@@ -102,6 +102,7 @@ export class HomeScreen extends Component {
 
           <View style={styles.cc2}>
             <FlatList
+              horizontal={true}
               data={this.state.dataSource}
               renderItem={({ item }) => <Item data={item} />}
               keyExtractor={(item, index) => index.toString()}
