@@ -1,13 +1,13 @@
-import React, { Component } from "react";
-import { Text, View, Image } from "react-native";
-import styles from "../Styles";
-import R from "../R";
+import React, { Component } from 'react';
+import { Text, View, Image } from 'react-native';
+import styles from '../Styles';
+import R from '../R';
 
 export class SplashScreen extends Component {
   componentDidMount() {
     const { navigate } = this.props.navigation;
     setTimeout(() => {
-      navigate("HomeScreen");
+      navigate('HomeScreen');
     }, 1000);
   }
   render() {

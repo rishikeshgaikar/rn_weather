@@ -1,10 +1,10 @@
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
-import { Time, Img } from '../components';
+import { Time, Img, Card } from '../components';
 import R from '../R';
 
 const Item = props => (
-  <View style={styles.container}>
+  <Card>
     <View style={styles.c1}>
       <Time style={styles.text}>{props.data.time}</Time>
     </View>
@@ -17,26 +17,12 @@ const Item = props => (
       </Text>
     </View>
     <View style={styles.c3}>
-      {/* <Text style={styles.text}>{props.data.icon}</Text> */}
       <Img d2={props.data.icon} h={40} w={40} />
     </View>
-  </View>
+  </Card>
 );
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'row',
-    backgroundColor: R.colors.card,
-    margin: 8,
-    padding: 10,
-    borderRadius: 10,
-    shadowColor: R.colors.shadow,
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 2,
-    elevation: 10
-  },
   c1: {
     flex: 3,
     paddingLeft: 10,

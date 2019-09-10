@@ -11,6 +11,7 @@ const styles = StyleSheet.create({
   },
   c1: {
     flex: 4,
+    width: '100%',
     alignItems: 'center',
     justifyContent: 'center'
   },
