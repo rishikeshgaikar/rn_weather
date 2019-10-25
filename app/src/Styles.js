@@ -10,18 +10,15 @@ const styles = StyleSheet.create({
     flex: 1
   },
   c1: {
-    flex: 4,
-    width: '100%',
-    alignItems: 'center',
-    justifyContent: 'center'
+    flex: 4
   },
   c2: {
-    flex: 1,
+    flex: 1.5,
     alignItems: 'center',
     justifyContent: 'center'
   },
   cc1: {
-    flex: 4
+    flex: 3
   },
   cc2: {
     flex: 2
@@ -30,8 +27,7 @@ const styles = StyleSheet.create({
     backgroundColor: R.colors.statusbar
   },
   celsiusText: {
-    fontSize: 70,
-    fontStyle: 'normal',
+    fontSize: 80,
     fontFamily: R.fonts.psBold
   },
   splashContainer: {
@@ -53,8 +49,7 @@ const styles = StyleSheet.create({
     padding: 20,
     alignItems: 'center',
     justifyContent: 'center'
-  },
-  spinner: { padding: 30 }
+  }
 });
 
 export default styles;

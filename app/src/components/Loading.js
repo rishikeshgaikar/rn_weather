@@ -1,15 +1,24 @@
-import React from "react";
-import { View, ActivityIndicator, Text, Image } from "react-native";
-import styles from "../Styles";
-import R from "../R";
+import React from 'react';
+import { RootView } from '../components';
+import { View, ActivityIndicator, StyleSheet } from 'react-native';
+
+const styles = StyleSheet.create({
+  view: {
+    flex: 1,
+    padding: 20,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  spinner: { padding: 30 }
+});
 
 const Loading = () => {
   return (
-    <View style={styles.spinnerStyle}>
-      <Image source={R.images.sunny_day} style={styles.splashImg} />
-      <Text style={styles.splashTitle}> rnWeather</Text>
-      <ActivityIndicator size={"large"} style={styles.spinner} />
-    </View>
+    <RootView>
+      <View style={styles.view}>
+        <ActivityIndicator size={'large'} style={styles.spinner} />
+      </View>
+    </RootView>
   );
 };
 

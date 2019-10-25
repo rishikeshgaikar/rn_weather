@@ -3,5 +3,4 @@ const fonts = {
   psItalic: 'ProductSans-Italic',
   psRegular: 'ProductSans-Regular'
 };
-
 export default fonts;

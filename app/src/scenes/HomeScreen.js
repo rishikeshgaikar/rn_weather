@@ -1,118 +1,180 @@
-import React, { Component } from 'react';
-import { Text, View, FlatList, ScrollView, SafeAreaView } from 'react-native';
-import { Card, HCard, Item, Img, Loading } from '../components';
+import React, { Component, useEffect } from 'react';
+import {
+  View,
+  FlatList,
+  ScrollView,
+  TouchableOpacity,
+  Button,
+  Text
+} from 'react-native';
+import {
+  WeeklyCard,
+  Img,
+  Loading,
+  RootView,
+  CText,
+  Card,
+  CurrentlyCardRow
+} from '../components';
 import styles from '../Styles';
-
-export class HomeScreen extends Component {
-  constructor() {
-    super();
-    this.state = {
-      isLoading: true,
-      currently: [],
-      daily: [],
-      time: '',
-      latitude: '',
-      longitude: '',
-      timezone: '',
-      dataSource: ''
-    };
-  }
-
-  componentDidMount() {
-    const api = `https://api.darksky.net/forecast/97bbbe51f6bf06e0fa1d20b2f12146b6/19.0760,72.8777?units=si&exclude=minutely,hourly,alerts`;
-    return fetch(api, {
-      headers: {
-        'Cache-Control': 'no-cache'
-      }
-    })
-      .then(response => response.json())
-      .then(responseJson =>
-        this.setState({
-          currently: responseJson.currently,
-          daily: responseJson.daily.data,
-          time: responseJson.currently.time,
-          latitude: responseJson.latitude,
-          longitude: responseJson.longitude,
-          timezone: responseJson.timezone,
-          dataSource: responseJson.daily.data,
-          isLoading: false
-        })
-      )
-      .catch(error => {
-        console.error(error);
-      });
-  }
-
-  render() {
-    if (this.state.isLoading) {
-      return <Loading />;
-    } else {
-      return (
-        <SafeAreaView style={styles.container}>
-          <View style={styles.container}>
-            <View style={styles.cc1}>
-              <View style={styles.c1}>
-                <Img d2={this.state.currently.icon} h={100} w={100} />
-                <Text style={styles.celsiusText}>
-                  {Math.round(this.state.currently.temperature)}&deg;C
-                </Text>
-                <Text>{this.state.currently.summary}</Text>
-              </View>
-
-              <View style={styles.c2}>
-                <ScrollView horizontal={true}>
-                  <HCard
-                    data={this.state.currently.pressure}
-                    heading={'Pressure'}
-                    unit={'hPa'}
-                  />
-                  <HCard
-                    data={this.state.currently.windSpeed}
-                    heading={'Wind Speed'}
-                    unit={'m/s'}
-                  />
-                  <HCard
-                    data={this.state.currently.humidity}
-                    heading={'Humidity'}
-                    unit={'%'}
-                  />
-                  <HCard
-                    data={this.state.currently.dewPoint}
-                    heading={'Dew Pt'}
-                    unit={'&deg;'}
-                  />
-                  <HCard
-                    data={this.state.currently.uvIndex}
-                    heading={'UV Index'}
-                    unit={''}
-                  />
-                  <HCard
-                    data={this.state.currently.visibility}
-                    heading={'Visibility'}
-                    unit={''}
-                  />
-                  <HCard
-                    data={this.state.currently.ozone}
-                    heading={'Ozone'}
-                    unit={''}
-                  />
-                </ScrollView>
-              </View>
-            </View>
-
-            <View style={styles.cc2}>
-              <FlatList
-                horizontal={true}
-                data={this.state.dataSource}
-                renderItem={({ item }) => <Item data={item} />}
-                keyExtractor={(item, index) => index.toString()}
-              />
-            </View>
-          </View>
-        </SafeAreaView>
-      );
+import { connect } from 'react-redux';
+import { apiWeather } from '../redux/Actions';
+import Icon from 'react-native-vector-icons/SimpleLineIcons';
+Icon.loadFont();
+const HomeScreen = ({
+  loc,
+  lat,
+  lon,
+  wetData,
+  loading,
+  unit,
+  lang,
+  iconColor,
+  navigation,
+  apiWeather
+}) => {
+  useEffect(() => {
+    const isFocused = navigation.isFocused();
+    if (isFocused) {
+      apiCall();
     }
-  }
-}
+    const navFocusListener = navigation.addListener('didFocus', () => {
+      apiCall();
+    });
 
-export default HomeScreen;
+    return () => {
+      navFocusListener.remove();
+    };
+  }, []);
+
+  const apiCall = () => {
+    apiWeather(lat, lon, unit, lang);
+  };
+
+  if (!loading) {
+    return (
+      <RootView>
+        <View
+          style={{
+            flexDirection: 'row'
+          }}
+        >
+          <View
+            style={{
+              flex: 1,
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}
+          >
+            <TouchableOpacity
+              style={{ padding: 15, alignSelf: 'flex-start' }}
+              onPress={() => apiCall()}
+            >
+              <Icon name={'refresh'} size={30} color={iconColor} />
+            </TouchableOpacity>
+          </View>
+          <View
+            style={{
+              paddingTop: 17.5,
+              flex: 4,
+              alignItems: 'center'
+            }}
+          >
+            <ScrollView
+              horizontal={true}
+              showsHorizontalScrollIndicator={false}
+            >
+              <CText title={loc} fontsize={20} />
+            </ScrollView>
+          </View>
+          <View
+            style={{
+              flex: 1,
+              alignItems: 'center'
+            }}
+          >
+            <TouchableOpacity
+              style={{ padding: 15, alignSelf: 'flex-end' }}
+              onPress={() => navigation.navigate('SettingScreen')}
+            >
+              <Icon name={'settings'} size={30} color={iconColor} />
+            </TouchableOpacity>
+          </View>
+        </View>
+        <View style={styles.cc1}>
+          <View style={styles.c1}>
+            <Card>
+              <View
+                style={{
+                  flex: 1,
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}
+              >
+                <Img d2={wetData.currently.icon} h={125} w={125} />
+
+                <Text style={{ fontSize: 60 }}>
+                  {Math.round(wetData.currently.temperature) +
+                    (unit == 'si' ? ' \u2103' : ' \u2109')}
+                </Text>
+                <Text style={{ fontSize: 20 }}>
+                  {wetData.currently.summary}
+                </Text>
+              </View>
+            </Card>
+          </View>
+          <View style={styles.c2}>
+            <CurrentlyCardRow
+              pressure={wetData.currently.pressure}
+              windSpeed={wetData.currently.windSpeed}
+              humidity={wetData.currently.humidity}
+              dewPoint={wetData.currently.dewPoint}
+              uvIndex={wetData.currently.uvIndex}
+              visibility={wetData.currently.visibility}
+              ozone={wetData.currently.ozone}
+            />
+          </View>
+        </View>
+        <View style={styles.cc2}>
+          <FlatList
+            showsHorizontalScrollIndicator={false}
+            horizontal={true}
+            data={wetData.daily.data}
+            renderItem={({ item }) => <WeeklyCard data={item} />}
+            keyExtractor={item => item.id}
+          />
+        </View>
+      </RootView>
+    );
+  } else {
+    return (
+      <RootView>
+        <Loading />
+      </RootView>
+    );
+  }
+};
+
+const mapStateToProps = ({ mainR, apiR, langR, unitR, themeR }) => {
+  const { loc, lat, lon } = mainR;
+  const { wetData, loading } = apiR;
+  const { unit } = unitR;
+  const { lang } = langR;
+  const { iconColor } = themeR.theme;
+  return {
+    loc,
+    lat,
+    lon,
+    wetData,
+    loading,
+    unit,
+    lang,
+    iconColor
+    // current: apiR.data ? (apiR.data.currently ? apiR.data.currently : '') : '',
+    // daily: apiR.data ? (apiR.data.daily ? apiR.data.daily.data : '') : ''
+  };
+};
+export default connect(
+  mapStateToProps,
+  { apiWeather }
+)(HomeScreen);

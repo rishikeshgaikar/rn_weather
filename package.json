@@ -5,15 +5,30 @@
   "scripts": {
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "run-ios": "react-native run-ios",
+    "run-android": "react-native run-android",
+    "make-cindex": "node scripts/cindex.js",
+    "make-sindex": "node scripts/sindex.js",
+    "make-fonts": "node scripts/fonts.js",
+    "make-images": "node scripts/images.js"
   },
   "dependencies": {
+    "@react-native-community/async-storage": "^1.6.1",
+    "@react-native-community/geolocation": "^2.0.2",
+    "axios": "^0.19.0",
     "jetifier": "^1.6.4",
     "react": "16.8.6",
-    "react-native": "0.60.0",
+    "react-native": "0.60.5",
+    "react-native-datepicker": "^1.7.2",
     "react-native-gesture-handler": "^1.4.1",
     "react-native-responsive-screen": "^1.2.2",
-    "react-navigation": "^3.12.1"
+    "react-native-vector-icons": "^6.6.0",
+    "react-navigation": "^3.12.1",
+    "react-redux": "^7.1.1",
+    "redux": "^4.0.4",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "@babel/core": "7.5.0",

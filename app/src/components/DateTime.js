@@ -2,20 +2,25 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import R from '../R';
 
-export class Time extends Component {
-  constructor(props) {
-    super(props);
-  }
-  render() {
-    var myDate = new Date(this.props.children * 1000);
+export const DateTime = ({ isDate, epochTime }) => {
+  var myDate = new Date(epochTime * 1000);
+  var hours = myDate.getHours();
+  var minutes = '0' + myDate.getMinutes();
+  var myTime = hours + ':' + minutes.substr(-2);
+  if (isDate) {
     return (
       <View>
         <Text style={styles.text}>{myDate.toDateString('en-IN')}</Text>
-        {/* <Text>{myDate.getDay("en-IN")}</Text> */}
+      </View>
+    );
+  } else {
+    return (
+      <View>
+        <Text style={styles.text}>{myTime}</Text>
       </View>
     );
   }
-}
+};
 
 const styles = StyleSheet.create({
   text: {
@@ -23,5 +28,3 @@ const styles = StyleSheet.create({
     fontSize: 20
   }
 });
-
-export default Time;
