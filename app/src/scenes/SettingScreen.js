@@ -4,7 +4,7 @@ import { SettingItems, RootView, CText } from '../components';
 import { connect } from 'react-redux';
 const styles = StyleSheet.create({
   poweredText: {
-    marginTop: 20,
+    marginVertical: 20,
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'row'
@@ -72,7 +72,4 @@ const mapStateToProps = ({ unitR, themeR, langR, mainR }) => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  {}
-)(SettingScreen);
+export default connect(mapStateToProps, {})(SettingScreen);

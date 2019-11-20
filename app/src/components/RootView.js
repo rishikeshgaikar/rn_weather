@@ -19,7 +19,7 @@ const RootView = props => {
       >
         <StatusBar
           barStyle={
-            themeName == 'Dark Theme' ? 'light-content' : 'dark-content'
+            themeName == 'Very White' ? 'dark-content' : 'light-content'
           }
           backgroundColor={backgroundColor}
         />

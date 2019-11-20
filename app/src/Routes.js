@@ -102,6 +102,12 @@ const MainStack = createStackNavigator(
       navigationOptions: {
         title: 'Time Machine'
       }
+    },
+    DetectLocation: {
+      screen: DetectLocation,
+      navigationOptions: {
+        title: 'Detect Location'
+      }
     }
   },
   {

@@ -6,8 +6,8 @@ import { changeTheme } from '../redux/Actions';
 import { lightTheme, darkTheme } from '../redux/themes';
 
 const themeList = [
-  { code: lightTheme, title: 'Light Theme' },
-  { code: darkTheme, title: 'Dark Theme' }
+  { code: lightTheme, title: lightTheme.themeName },
+  { code: darkTheme, title: darkTheme.themeName }
 ];
 
 const SelectTheme = ({ theme, changeTheme, navigation }) => {
@@ -15,6 +15,8 @@ const SelectTheme = ({ theme, changeTheme, navigation }) => {
     <RootView>
       <FlatList
         data={themeList}
+        // extraData={theme.themeName}
+        keyExtractor={item => item.title}
         renderItem={({ item }) => (
           <TouchableOpacity
             onPress={() => {
@@ -38,7 +40,4 @@ const mapStateToProps = state => {
     theme: state.themeR.theme
   };
 };
-export default connect(
-  mapStateToProps,
-  { changeTheme }
-)(SelectTheme);
+export default connect(mapStateToProps, { changeTheme })(SelectTheme);

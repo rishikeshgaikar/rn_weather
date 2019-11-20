@@ -1,4 +1,4 @@
-const images = {
+export const images = {
   blizzard: require('./images/blizzard.png'),
   breeze: require('./images/breeze.png'),
   cloudy_day: require('./images/cloudy-day.png'),
@@ -32,5 +32,3 @@ const images = {
   time_machine: require('./images/time-machine.png'),
   detect_location: require('./images/detect-location.png')
 };
-
-export default images;

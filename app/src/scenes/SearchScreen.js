@@ -47,6 +47,7 @@ const SearchScreen = ({
           style={{ marginHorizontal: 15 }}
           data={locData}
           ItemSeparatorComponent={this.renderSeparator}
+          keyExtractor={item => item.lon.toString()}
           renderItem={({ item, index }) => (
             <TouchableOpacity
               onPress={() => {
@@ -98,7 +99,6 @@ const mapStateToProps = ({ apiR, themeR }) => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  { apiLocation, changeLoc }
-)(SearchScreen);
+export default connect(mapStateToProps, { apiLocation, changeLoc })(
+  SearchScreen
+);

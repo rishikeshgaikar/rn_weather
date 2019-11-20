@@ -16,11 +16,13 @@ const SelectUnit = ({ unit, changeUnit, navigation }) => {
     <RootView>
       <FlatList
         data={unitList}
+        extraData={unit}
+        keyExtractor={item => item.title}
         renderItem={({ item }) => (
           <TouchableOpacity
             onPress={() => {
               changeUnit(item.code);
-              navigation.navigate('SettingScreen');
+              // navigation.navigate('SettingScreen');
             }}
           >
             <SettingOptionItems
@@ -39,7 +41,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  { changeUnit }
-)(SelectUnit);
+export default connect(mapStateToProps, { changeUnit })(SelectUnit);

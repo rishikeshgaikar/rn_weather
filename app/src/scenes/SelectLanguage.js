@@ -66,12 +66,14 @@ const SelectLanguage = ({ lang, changeLang, navigation }) => {
     <RootView>
       <FlatList
         data={langList}
+        extraData={lang}
+        keyExtractor={item => item.title}
         renderItem={({ item }) => (
           <TouchableOpacity
             onPress={() => {
               changeLang(item.code);
               console.log(item.code);
-              navigation.navigate('SettingScreen');
+              // navigation.navigate('SettingScreen');
             }}
           >
             <SettingOptionItems
@@ -90,7 +92,4 @@ const mapStateToProps = (state, ownProps) => {
     lang: state.langR.lang
   };
 };
-export default connect(
-  mapStateToProps,
-  { changeLang }
-)(SelectLanguage);
+export default connect(mapStateToProps, { changeLang })(SelectLanguage);

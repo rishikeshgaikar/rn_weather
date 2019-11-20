@@ -9,7 +9,7 @@ const SplashScreen = ({ navigation, theme }) => {
   useEffect(() => {
     setTimeout(() => {
       navigation.navigate('DetectLocation');
-    }, 1000);
+    }, 2000);
   }, []);
 
   return (

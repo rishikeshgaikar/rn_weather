@@ -1,5 +1,11 @@
 import React, { useState } from 'react';
-import { View, Image, PermissionsAndroid, Platform } from 'react-native';
+import {
+  View,
+  Image,
+  PermissionsAndroid,
+  Platform,
+  ScrollView
+} from 'react-native';
 import R from '../R';
 import { Loading, RootView, CText, CButton } from '../components';
 import { apiReverseLocation, changeLoc } from '../redux/Actions';
@@ -80,30 +86,39 @@ const DetectLocation = ({
 
   return (
     <RootView>
-      <View style={{ flex: 4, alignItems: 'center', justifyContent: 'center' }}>
-        <Image
-          source={R.images.detect_location}
-          style={{ width: 175, height: 175 }}
-        />
-      </View>
-      <View style={{ flex: 2, alignItems: 'center' }}>{detectlocName()}</View>
-      <View style={{ flex: 5 }}>
-        <CButton
-          title='Go To Home'
-          onPress={() => navigation.navigate('HomeScreen')}
-        ></CButton>
-        <View style={{ alignItems: 'center' }}>
-          <CText title={'OR'} fontsize={20} fontWeight={'bold'} />
+      <ScrollView>
+        <View
+          style={{
+            flex: 4,
+            height: R.dimensions.height / 2,
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}
+        >
+          <Image
+            source={R.images.detect_location}
+            style={{ width: 175, height: 175 }}
+          />
         </View>
-        <CButton title='Detect Location' onPress={() => locationGrant()} />
-        <View style={{ alignItems: 'center' }}>
-          <CText title={'OR'} fontsize={20} fontWeight={'bold'} />
+        <View style={{ flex: 2, alignItems: 'center' }}>{detectlocName()}</View>
+        <View style={{ flex: 5, height: R.dimensions.height / 2 }}>
+          <CButton
+            title='Go To Home'
+            onPress={() => navigation.navigate('HomeScreen')}
+          ></CButton>
+          <View style={{ alignItems: 'center' }}>
+            <CText title={'OR'} fontsize={20} fontWeight={'bold'} />
+          </View>
+          <CButton title='Detect Location' onPress={() => locationGrant()} />
+          <View style={{ alignItems: 'center' }}>
+            <CText title={'OR'} fontsize={20} fontWeight={'bold'} />
+          </View>
+          <CButton
+            title='Search Location'
+            onPress={() => navigation.navigate('SearchScreen')}
+          />
         </View>
-        <CButton
-          title='Search Location'
-          onPress={() => navigation.navigate('SearchScreen')}
-        />
-      </View>
+      </ScrollView>
     </RootView>
   );
 };
@@ -116,7 +131,6 @@ const mapStateToProps = ({ apiR }) => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  { apiReverseLocation, changeLoc }
-)(DetectLocation);
+export default connect(mapStateToProps, { apiReverseLocation, changeLoc })(
+  DetectLocation
+);

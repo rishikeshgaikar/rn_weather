@@ -29,7 +29,7 @@ class HomeScreen extends Component {
     });
   }
   componentWillUnmount() {
-    onFocusCall.remove();
+    this.onFocusCall.remove();
   }
   apiCall() {
     this.props.apiWeather(
@@ -135,7 +135,7 @@ class HomeScreen extends Component {
               horizontal={true}
               data={wetData.daily.data}
               renderItem={({ item }) => <WeeklyCard data={item} />}
-              keyExtractor={item => item.id}
+              keyExtractor={item => item.time.toString()}
             />
           </View>
         </RootView>
@@ -169,7 +169,4 @@ const mapStateToProps = ({ mainR, apiR, langR, unitR, themeR }) => {
     // daily: apiR.data ? (apiR.data.daily ? apiR.data.daily.data : '') : ''
   };
 };
-export default connect(
-  mapStateToProps,
-  { apiWeather }
-)(HomeScreen);
+export default connect(mapStateToProps, { apiWeather })(HomeScreen);

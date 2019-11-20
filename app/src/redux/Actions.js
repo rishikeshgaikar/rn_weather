@@ -32,7 +32,7 @@ const changeAccentColor = color => {
 };
 const apiLocation = loc => dispatch => {
   const key = '03d87b93bc3308';
-  const api = `https://api.locationiq.com/v1/autocomplete.php?key=${key}&q=${loc}&limit=10`;
+  const api = `https://api.locationiq.com/v1/autocomplete.php?key=${key}&q=${loc}`;
   const request = axios.get(api);
   console.log(api);
   dispatch({ type: 'FETCHING_STARTED' });

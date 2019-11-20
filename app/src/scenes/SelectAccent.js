@@ -6,8 +6,9 @@ import { changeAccentColor } from '../redux/Actions';
 import { accentColor } from '../redux/themes';
 
 const unitList = [
-  { code: accentColor.blue, title: 'Blue' },
-  { code: accentColor.orange, title: 'Orange' }
+  { code: accentColor.blue, title: accentColor.blue.accentName },
+  { code: accentColor.orange, title: accentColor.orange.accentName },
+  { code: accentColor.teal, title: accentColor.teal.accentName }
 ];
 
 const SelectAccent = ({ theme, changeAccentColor, navigation }) => {
@@ -16,12 +17,14 @@ const SelectAccent = ({ theme, changeAccentColor, navigation }) => {
     <RootView>
       <FlatList
         data={unitList}
+        extraData={theme.accentName}
+        keyExtractor={item => item.title}
         renderItem={({ item }) => (
           <TouchableOpacity
             onPress={() => {
               changeAccentColor(item.code);
               console.log(item.code);
-              navigation.navigate('SettingScreen');
+              // navigation.navigate('SettingScreen');
             }}
           >
             <SettingOptionItems
@@ -39,7 +42,4 @@ const mapStateToProps = state => {
     theme: state.themeR.theme
   };
 };
-export default connect(
-  mapStateToProps,
-  { changeAccentColor }
-)(SelectAccent);
+export default connect(mapStateToProps, { changeAccentColor })(SelectAccent);
