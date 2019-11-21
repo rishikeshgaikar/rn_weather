@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import R from '../R';
 import { Loading, RootView, CText, CButton } from '../components';
-import { apiReverseLocation, changeLoc } from '../redux/Actions';
+import { apiReverseLocation, changeLoc, changeAuth } from '../redux/Actions';
 import { connect } from 'react-redux';
 import Geolocation from '@react-native-community/geolocation';
 
@@ -22,7 +22,8 @@ const DetectLocation = ({
   revData,
   loading,
   navigation,
-  apiReverseLocation
+  apiReverseLocation,
+  changeAuth
 }) => {
   const [state, setState] = useState({
     loc: '',
@@ -104,7 +105,10 @@ const DetectLocation = ({
         <View style={{ flex: 5, height: R.dimensions.height / 2 }}>
           <CButton
             title='Go To Home'
-            onPress={() => navigation.navigate('HomeScreen')}
+            onPress={() => {
+              navigation.navigate('HomeScreen');
+              changeAuth(true);
+            }}
           ></CButton>
           <View style={{ alignItems: 'center' }}>
             <CText title={'OR'} fontsize={20} fontWeight={'bold'} />
@@ -131,6 +135,8 @@ const mapStateToProps = ({ apiR }) => {
   };
 };
 
-export default connect(mapStateToProps, { apiReverseLocation, changeLoc })(
-  DetectLocation
-);
+export default connect(mapStateToProps, {
+  apiReverseLocation,
+  changeLoc,
+  changeAuth
+})(DetectLocation);

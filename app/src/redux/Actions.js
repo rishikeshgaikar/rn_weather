@@ -1,5 +1,11 @@
 import axios from 'axios';
 
+const changeAuth = auth => {
+  return {
+    type: 'CHNAGE_AUTH',
+    payload: auth
+  };
+};
 const changeUnit = unit => {
   return {
     type: 'CHANGE_UNIT',
@@ -100,6 +106,7 @@ const apiTimeMachine = (lat, lon, unit, lang, time) => dispatch => {
     });
 };
 export {
+  changeAuth,
   changeUnit,
   changeLang,
   changeTheme,

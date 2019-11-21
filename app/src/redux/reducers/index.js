@@ -3,6 +3,7 @@ import { themeReducer } from './themeReducer';
 import { langReducer } from './langReducer';
 import { apiReducer } from './apiReducer';
 import { mainReducer } from './mainReducer.js';
+import { authReducer } from './authReducer';
 import { combineReducers } from 'redux';
 
 export const rootReducer = combineReducers({
@@ -10,5 +11,6 @@ export const rootReducer = combineReducers({
   themeR: themeReducer,
   langR: langReducer,
   apiR: apiReducer,
-  mainR: mainReducer
+  mainR: mainReducer,
+  authR: authReducer
 });

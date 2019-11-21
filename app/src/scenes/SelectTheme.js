@@ -15,14 +15,14 @@ const SelectTheme = ({ theme, changeTheme, navigation }) => {
     <RootView>
       <FlatList
         data={themeList}
-        // extraData={theme.themeName}
+        extraData={theme.themeName}
         keyExtractor={item => item.title}
         renderItem={({ item }) => (
           <TouchableOpacity
             onPress={() => {
               console.log(item.code);
               changeTheme(item.code);
-              navigation.navigate('SettingScreen');
+              // navigation.navigate('SettingScreen');
             }}
           >
             <SettingOptionItems

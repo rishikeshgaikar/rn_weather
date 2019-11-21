@@ -5,10 +5,13 @@ import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/Ionicons';
 Icon.loadFont();
 
-const SplashScreen = ({ navigation, theme }) => {
+const SplashScreen = ({ navigation, theme, auth }) => {
+  console.log('======>', auth);
   useEffect(() => {
     setTimeout(() => {
-      navigation.navigate('DetectLocation');
+      auth
+        ? navigation.navigate('HomeScreen')
+        : navigation.navigate('DetectLocation');
     }, 2000);
   }, []);
 
@@ -27,10 +30,12 @@ const SplashScreen = ({ navigation, theme }) => {
   );
 };
 
-const mapStateToProps = ({ themeR }) => {
+const mapStateToProps = ({ themeR, authR }) => {
   const { theme } = themeR;
+  const { auth } = authR;
   return {
-    theme
+    theme,
+    auth
   };
 };
 export default connect(mapStateToProps)(SplashScreen);
