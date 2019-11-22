@@ -44,11 +44,7 @@ class HomeScreen extends Component {
       const { wetData } = this.props;
       return (
         <RootView>
-          <View
-            style={{
-              flexDirection: 'row'
-            }}
-          >
+          <View style={{ flexDirection: 'row' }}>
             <View
               style={{
                 flex: 1,
@@ -105,9 +101,9 @@ class HomeScreen extends Component {
                     justifyContent: 'center'
                   }}
                 >
-                  <Img d2={wetData.currently.icon} h={125} w={125} />
+                  <Img d2={wetData.currently.icon} h={115} w={115} />
 
-                  <Text style={{ fontSize: 60 }}>
+                  <Text style={{ fontSize: 50 }}>
                     {Math.round(wetData.currently.temperature) +
                       (this.props.unit == 'si' ? ' \u2103' : ' \u2109')}
                   </Text>

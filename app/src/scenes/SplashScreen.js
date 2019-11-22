@@ -11,7 +11,7 @@ const SplashScreen = ({ navigation, theme, auth }) => {
     setTimeout(() => {
       auth
         ? navigation.navigate('HomeScreen')
-        : navigation.navigate('DetectLocation');
+        : navigation.navigate('GetStarted');
     }, 2000);
   }, []);
 

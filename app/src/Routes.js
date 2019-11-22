@@ -6,7 +6,7 @@ import {
 } from 'react-navigation';
 import {
   HomeScreen,
-  DetectLocation,
+  SelectLocation,
   SplashScreen,
   SearchScreen,
   SettingScreen,
@@ -15,18 +15,19 @@ import {
   SelectTheme,
   SelectDate,
   TimeMachine,
-  SelectAccent
+  SelectAccent,
+  GetStarted
 } from './scenes/index';
 
 const NotMainStack = createStackNavigator(
   {
-    DetectLocation: {
-      screen: DetectLocation,
+    GetStarted: {
+      screen: GetStarted,
       navigationOptions: {
         title: 'Detect Location'
       }
     },
-    SearchScreen: {
+    SearchLoc: {
       screen: SearchScreen,
       navigationOptions: {
         title: 'Search locations'
@@ -60,7 +61,6 @@ const MainStack = createStackNavigator(
         header: null
       }
     },
-
     SettingScreen: {
       screen: SettingScreen,
       navigationOptions: {
@@ -103,10 +103,17 @@ const MainStack = createStackNavigator(
         title: 'Time Machine'
       }
     },
-    DetectLocation: {
-      screen: DetectLocation,
+    SelectLocation: {
+      screen: SelectLocation,
       navigationOptions: {
         title: 'Detect Location'
+      }
+    },
+
+    SearchScreen: {
+      screen: SearchScreen,
+      navigationOptions: {
+        title: 'Search locations'
       }
     }
   },

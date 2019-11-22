@@ -6,7 +6,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
-  blacklist: ['mainR', 'apiR']
+  blacklist: ['apiR']
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

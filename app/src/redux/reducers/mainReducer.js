@@ -1,7 +1,7 @@
 const initialState = {
-  loc: 'Mumbai',
-  lat: '19.0760',
-  lon: '72.8777'
+  loc: '',
+  lat: '',
+  lon: ''
 };
 
 export const mainReducer = (state = initialState, action) => {

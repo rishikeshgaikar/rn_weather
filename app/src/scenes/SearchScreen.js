@@ -1,7 +1,7 @@
 import React, { Component, useState } from 'react';
 import { View, FlatList, TextInput, TouchableOpacity } from 'react-native';
 import { Loading, RootView, CText } from '../components';
-import { apiLocation, changeLoc } from '../redux/Actions';
+import { apiLocation, changeAuth } from '../redux/Actions';
 import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/FontAwesome';
 Icon.loadFont();
@@ -11,7 +11,7 @@ const SearchScreen = ({
   loading,
   theme,
   apiLocation,
-  changeLoc,
+  changeAuth,
   navigation
 }) => {
   const [SearchText, SetSearchText] = useState('');
@@ -51,7 +51,7 @@ const SearchScreen = ({
           renderItem={({ item, index }) => (
             <TouchableOpacity
               onPress={() => {
-                changeLoc(item.display_place, item.lat, item.lon);
+                changeAuth(true);
                 console.log(item.display_place, item.lat, item.lon);
                 navigation.navigate('HomeScreen');
               }}
@@ -99,6 +99,6 @@ const mapStateToProps = ({ apiR, themeR }) => {
   };
 };
 
-export default connect(mapStateToProps, { apiLocation, changeLoc })(
+export default connect(mapStateToProps, { apiLocation, changeAuth })(
   SearchScreen
 );

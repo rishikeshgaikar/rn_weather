@@ -1,4 +1,4 @@
-import DetectLocation from './DetectLocation';
+import SelectLocation from './SelectLocation';
 import HomeScreen from './HomeScreen';
 import SearchScreen from './SearchScreen';
 import SelectAccent from './SelectAccent';
@@ -9,4 +9,18 @@ import SelectUnit from './SelectUnit';
 import SettingScreen from './SettingScreen';
 import SplashScreen from './SplashScreen';
 import TimeMachine from './TimeMachine';
-export {DetectLocation,HomeScreen,SearchScreen,SelectAccent,SelectDate,SelectLanguage,SelectTheme,SelectUnit,SettingScreen,SplashScreen,TimeMachine};
+import GetStarted from './GetStarted';
+export {
+  SelectLocation,
+  HomeScreen,
+  SearchScreen,
+  SelectAccent,
+  SelectDate,
+  SelectLanguage,
+  SelectTheme,
+  SelectUnit,
+  SettingScreen,
+  SplashScreen,
+  TimeMachine,
+  GetStarted
+};

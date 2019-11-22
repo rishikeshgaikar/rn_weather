@@ -25,7 +25,7 @@ const SettingScreen = ({ loc, unit, theme, lang, navigation }) => {
           title='Location'
           icon='arrow-right'
           Selected={loc}
-          onPress={() => navigation.navigate('DetectLocation')}
+          onPress={() => navigation.navigate('SelectLocation')}
         />
         <SettingItems
           title='Unit'

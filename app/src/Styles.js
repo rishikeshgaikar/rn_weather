@@ -13,9 +13,7 @@ const styles = StyleSheet.create({
     flex: 4
   },
   c2: {
-    flex: 1.5,
-    alignItems: 'center',
-    justifyContent: 'center'
+    flex: 2
   },
   cc1: {
     flex: 3
