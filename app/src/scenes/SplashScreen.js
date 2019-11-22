@@ -17,7 +17,7 @@ const SplashScreen = ({ navigation, auth }) => {
   return (
     <RootView>
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Image source={R.images.sun} style={{ marginVertical: 20 }}></Image>
+        <Image source={R.images.splash} style={{ marginVertical: 20 }}></Image>
         <CText title={'weather'} fontsize={40} />
       </View>
     </RootView>
