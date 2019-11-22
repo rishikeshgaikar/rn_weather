@@ -30,5 +30,6 @@ export const images = {
   temperature: require('./images/temperature.png'),
   windy_day: require('./images/windy-day.png'),
   time_machine: require('./images/time-machine.png'),
-  detect_location: require('./images/detect-location.png')
+  detect_location: require('./images/detect-location.png'),
+  sun: require('./images/sun.png')
 };

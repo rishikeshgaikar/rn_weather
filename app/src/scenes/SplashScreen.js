@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react';
-import { View } from 'react-native';
+import { View, Image } from 'react-native';
 import { RootView, CText } from '../components';
 import { connect } from 'react-redux';
-import Icon from 'react-native-vector-icons/Ionicons';
-Icon.loadFont();
+import R from '../R';
 
-const SplashScreen = ({ navigation, theme, auth }) => {
+const SplashScreen = ({ navigation, auth }) => {
   console.log('======>', auth);
   useEffect(() => {
     setTimeout(() => {
@@ -18,23 +17,16 @@ const SplashScreen = ({ navigation, theme, auth }) => {
   return (
     <RootView>
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Icon
-          style={{ padding: 10 }}
-          name={'md-partly-sunny'}
-          size={250}
-          color={theme.iconColor}
-        />
-        <CText title={'rnWeather'} fontsize={40} />
+        <Image source={R.images.sun} style={{ marginVertical: 20 }}></Image>
+        <CText title={'weather'} fontsize={40} />
       </View>
     </RootView>
   );
 };
 
-const mapStateToProps = ({ themeR, authR }) => {
-  const { theme } = themeR;
+const mapStateToProps = ({ authR }) => {
   const { auth } = authR;
   return {
-    theme,
     auth
   };
 };
